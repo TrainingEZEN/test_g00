@@ -1,0 +1,231 @@
+<html>
+
+<head>
+    <title>
+        test
+    </title>
+
+<link rel="stylesheet" type="text/css" href="./css/game.css">
+<script src="./js/game.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="canvas-0"></div>
+<p>Game Play</p>
+
+<script>
+  //////////////////Array for the game map, level1.2...etc, be creative!!!//////////////////
+  var levels = [
+    // level 1
+    [
+    "                      ",
+    "                      ",
+    "  x              = x  ",
+    "  x         o o    x  ",
+    "  x @      xxxxx   x  ",
+    "  xxxxx            x  ",
+    "      x!!!!!!!!!!!!x  ",
+    "      xxxxxxxxxxxxxx  ",
+    "                      "
+    ],
+
+    // level 2
+    [
+    "                      ",
+    "                      ",
+    "  x           =  = x  ",
+    "  x         o o    x  ",
+    "  x @      xxxxx   x  ",
+    "  xxxxx            x  ",
+    "      x!!!!!!!!!!!!x  ",
+    "      xxxxxxxxxxxxxx  ",
+    "                      "
+    ],
+
+    // level 3
+    [
+    "                                                                       ",
+    "                                                                       ",
+    "                           o     o                                     ",
+    "  x           =  = x                          o          o           =x",
+    "  x         o o    x                                                   ",
+    "  x @      xxxxx   x   xxx   =xx   =x                                 o",
+    "  xxxxx            x                      xx    x    xx       xxx     x",
+    "      x!!!!!!!!!!!!x                     xx                          xx",
+    "      xxxxxxxxxxxxxx!!!!!!xxx!!!xx!!!xxxxx                          xxx",
+    "                   xxxxxxxxxxxxxxxxxxxxxxxx!!!!!!!!!!!!!!xxx!!!!!!xxxxx"
+    ],
+
+    // level 4
+    [
+    "                    =x",
+    "@                    x",
+    "xx  o       x        x",
+    "xxxx  o        o     x",
+    "x    =    x    x     x",
+    "x       o            x",
+    "x       x            x",
+    "x    o  =  o         x",
+    "x    x     x         x",
+    "x                    x",
+    "x                    x",
+    "x      x      x      x",
+    "x   =   =   =     =  x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x =   =   =   =   =  x",
+    "x                    x",
+    "x                    x",
+    "x =      =      =    x",
+    "x              o     x",
+    "x              x     x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x        o o         x",
+    "xxxxxxxxxx xxxxxxxxxxxx",
+    "x    =     =     =   x",
+    "x =    =    =     =  x",
+    "x     =        =     x",
+    "x        =  =        x",
+    "x   =     =      =   x",
+    "x       =   =        x",
+    "x                    x",
+    "x   =           =    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "xoooooooooooooooooooox",
+    "xxxxxxxxxxx xxxxxxxxxx",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x                    x",
+    "x          o         x",
+    "x          x         x",
+    "x!!!!!!!!!!!!!!!!!!!!x",
+    "x!!!!!!!!!!!!!!!!!!!!x",
+    ]
+
+  ];
+    ////////////////Load map to game////////////////
+    var GAME_LEVELS = [];
+    levels.forEach(function(level) {
+      GAME_LEVELS.push(level);
+    });
+
+    ////////////////Display the canvas////////////////
+    var simpleLevel = new Level(GAME_LEVELS[0]);
+    console.log(simpleLevel.width, "x", simpleLevel.height);
+    //TODO: Update Level preview based on level.next
+    document.getElementById("canvas-0").innerHTML = "Level Preview";
+
+    var parent = document.getElementById("canvas-0");
+    var DOM_DISPLAY = new DOMDisplay(parent, simpleLevel);
+
+    ////////////////Run game////////////////
+    runGame(GAME_LEVELS, DOM_DISPLAY);
+
+    //TODO: Pause the game - modify runLevel function
+    //TODO: Game over - modify runGame function
+    //document.getElementById("canvas-0").innerHTML = "Game Over";
+</script>
+
+</body>
+
+
+
+</html>
